@@ -23,9 +23,11 @@ Ransack.configure do |config|
 
   config.add_predicate "gteq_datetime",
                        arel_predicate: "gteq",
-                       formatter: ->(v) { v.beginning_of_day }
+                       formatter: ->(v) { v.beginning_of_day },
+                       type: :date
 
   config.add_predicate "lteq_datetime",
-                       arel_predicate: "lt",
-                       formatter: ->(v) { v + 1.day }
+                       arel_predicate: "lteq",
+                       formatter: ->(v) { v.end_of_day },
+                       type: :date
 end
